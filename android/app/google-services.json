@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "465505708746",
+    "project_id": "emad-kattara",
+    "storage_bucket": "emad-kattara.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:465505708746:android:da82aa32754708f60f6233",
+        "android_client_info": {
+          "package_name": "com.emadkattara.bankerslounge"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "465505708746-qpoq1i3dgkhc5gcg6cs0e54qi2j02hhq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBC6CqwMcEtR48Bqinsi05_Zg2PBzKLqxs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "465505708746-qpoq1i3dgkhc5gcg6cs0e54qi2j02hhq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "465505708746-g41u04khq3uh73j3df5bubd8f2ufek8d.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.emadKatara"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

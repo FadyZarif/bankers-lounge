@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>465505708746-me33989h0h550g0nrrinueo69qq03ldr.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.465505708746-me33989h0h550g0nrrinueo69qq03ldr</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>465505708746-23252uihq6gb6lvfd8cok696kusa4cdm.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDHroM_EMLUx6G9Kimgk8zcudhA5nAeT_A</string>
+	<key>GCM_SENDER_ID</key>
+	<string>465505708746</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.emadkattara.bankerslounge</string>
+	<key>PROJECT_ID</key>
+	<string>emad-kattara</string>
+	<key>STORAGE_BUCKET</key>
+	<string>emad-kattara.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:465505708746:ios:8e5955cfe567fb270f6233</string>
+</dict>
+</plist>
