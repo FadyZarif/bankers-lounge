@@ -31,7 +31,8 @@ class SignupCubit extends Cubit<SignupState> {
         email: email,
         phone: phone,
         uId: value.user!.uid,
-        city: city
+        city: city,
+        isRequested: false,
       );
     }).catchError((error) {
       print('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
@@ -46,7 +47,8 @@ class SignupCubit extends Cubit<SignupState> {
     required String email,
     required String phone,
     required String uId,
-    required String city
+    required String city,
+    required bool isRequested,
   }) {
     UserModel userModel = UserModel(
         token: token,
@@ -56,6 +58,7 @@ class SignupCubit extends Cubit<SignupState> {
         uId: uId,
         role: 'visitor',
         city: city,
+      isRequested: isRequested,
         image: 'https://cdn-icons-png.flaticon.com/512/274/274133.png?w=740&t=st=1664670509~exp=1664671109~hmac=daa652327bae2d17c15f4c20059f769329bfd09f38ab127909c65c7f8893005e',
     );
 

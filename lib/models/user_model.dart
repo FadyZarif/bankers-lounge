@@ -7,6 +7,7 @@ class UserModel {
   String? token;
   String? role;
   String? city;
+  bool? isRequested;
 
   UserModel({
     this.name,
@@ -17,6 +18,7 @@ class UserModel {
     this.token,
     this.role,
     this.city,
+    this.isRequested,
   });
 
   UserModel.fromJson(Map<String, dynamic> json) {
@@ -28,6 +30,7 @@ class UserModel {
     token = json['token'];
     role = json['role'];
     city = json['city'];
+    isRequested = json['isRequested'];
 
   }
 
@@ -41,6 +44,7 @@ class UserModel {
       'token': token,
       'role': role,
       'city': city,
+      'isRequested': isRequested,
     };
   }
 }

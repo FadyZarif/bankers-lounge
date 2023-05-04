@@ -62,8 +62,10 @@ class LayoutCubit extends Cubit<LayoutStates> {
       titlesList = [
         'Home',
         'Radio',
+        if(userModel?.role == 'admin')
         'Post',
         'Material',
+        if(userModel?.role == 'admin')
         'Users',
       ];
       emit(LayoutGetUserSuccessState());

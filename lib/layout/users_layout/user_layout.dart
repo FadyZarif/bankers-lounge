@@ -26,7 +26,7 @@ class UsersLayout extends StatelessWidget {
           condition: cubit.allUsers != null,
           builder: (context) {
             return DefaultTabController(
-              length: 3,
+              length: 4,
               child: GestureDetector(
                 onTap: () {
                   FocusScope.of(context).requestFocus(new FocusNode());
@@ -45,6 +45,9 @@ class UsersLayout extends StatelessWidget {
                       ),
                       Tab(
                         child: TabBarUsers(text: 'Visitors', number: searchEditingController.text.isEmpty? cubit.visitors!.length:cubit.visitorsFiltered!.length),
+                      ),
+                      Tab(
+                        child: TabBarUsers(text: 'Requests', number: searchEditingController.text.isEmpty? cubit.requests!.length:cubit.requestsFiltered!.length),
                       ),
                     ]),
                     title: Row(
@@ -81,6 +84,9 @@ class UsersLayout extends StatelessWidget {
                       ),
                       AllUsersScreen(
                         users: searchEditingController.text.isEmpty ? cubit.visitors! : cubit.visitorsFiltered!,
+                      ),
+                      AllUsersScreen(
+                        users: searchEditingController.text.isEmpty ? cubit.requests! : cubit.requestsFiltered!,
                       ),
                     ],
                   ),

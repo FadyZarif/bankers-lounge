@@ -30,4 +30,9 @@ class MaterialCubit extends Cubit<MaterialStates>{
       defToast(msg: error.toString());
     });
   }
+  void sendRequest(String uId){
+    FirebaseFirestore.instance.collection('users').doc(uId).update({'isRequested':true}).then((value) {
+      emit(MaterialSuccessRequestState());
+    });
+  }
 }

@@ -15,6 +15,7 @@ class UsersCubit extends Cubit<UsersStates> {
   List<UserModel>? allUsers;
   List<UserModel>? students;
   List<UserModel>? visitors;
+  List<UserModel>? requests;
   TextEditingController searchEditingController = TextEditingController();
 
   void getAllUsers(){
@@ -22,11 +23,13 @@ class UsersCubit extends Cubit<UsersStates> {
       allUsers = [];
       students = [];
       visitors = [];
+      requests = [];
       usersDocs.docs.forEach((user) {
         allUsers?.add(UserModel.fromJson(user.data()));
       });
       students?.addAll((allUsers?.where((element) => element.role == 'student'))!);
       visitors?.addAll((allUsers?.where((element) => element.role == 'visitor'))!);
+      requests?.addAll((allUsers?.where((element) => element.role == 'visitor' && element.isRequested ==true))!);
       search(searchEditingController.text);
       emit(UsersGetAllUsersSuccessfulState());
     }).onError((error){
@@ -38,10 +41,12 @@ class UsersCubit extends Cubit<UsersStates> {
   List<UserModel>? allUsersFiltered;
   List<UserModel>? studentsFiltered;
   List<UserModel>? visitorsFiltered;
+  List<UserModel>? requestsFiltered;
   void search(String q){
     allUsersFiltered =  allUsers?.where((element) {return (element.name!.contains(q) || element.email!.contains(q) || element.phone!.contains(q)); }).toList();
     studentsFiltered =  students?.where((element) {return (element.name!.contains(q) || element.email!.contains(q) || element.phone!.contains(q)); }).toList();
     visitorsFiltered =  visitors?.where((element) {return (element.name!.contains(q) || element.email!.contains(q) || element.phone!.contains(q)); }).toList();
+    requestsFiltered =  requests?.where((element) {return (element.name!.contains(q) || element.email!.contains(q) || element.phone!.contains(q)); }).toList();
     emit(UsersSearchState());
   }
 
