@@ -33,6 +33,7 @@ void main() async {
     // defToast(msg: event.data.toString());
   });
 
+
   DioHelper.init();
   Bloc.observer = MyBlocObserver();
   User? user = FirebaseAuth.instance.currentUser;

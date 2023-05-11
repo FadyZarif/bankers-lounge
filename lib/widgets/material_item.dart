@@ -1,4 +1,5 @@
 
+import 'package:bankerslounge/screens/video_viewer_screen/video_viewer.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -13,10 +14,15 @@ class MaterialItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('object');
     noScreenshot.screenshotOn();
     return InkWell(
       onTap: () {
+        if (materialModel.isVideo!) {
+          Navigator.push(
+              context,
+              CenterTransition(VideoViewerScreen(
+              )));
+        }
         if (materialModel.isPdf!) {
           Navigator.push(
               context,
@@ -35,12 +41,15 @@ class MaterialItem extends StatelessWidget {
         decoration: BoxDecoration(
             color: Color(0xff012623), borderRadius: BorderRadius.circular(8)),
         child: Center(
-          child: Text(
-            materialModel.name!,
-            style: TextStyle(
-              color: Color(0xfff8dca3),
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
+          child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Text(
+              materialModel.name!,
+              style: TextStyle(
+                color: Color(0xfff8dca3),
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
         ),

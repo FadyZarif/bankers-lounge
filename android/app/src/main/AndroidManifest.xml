@@ -1,8 +1,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.emadkattara.bankerslounge">
-   <application
-        android:label="bankerslounge"
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <application
+        android:requestLegacyExternalStorage="true"
+        android:label="Banker’s Lounge"
         android:name="${applicationName}"
+        android:usesCleartextTraffic="true"
         android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"

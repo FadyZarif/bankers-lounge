@@ -10,6 +10,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconly/iconly.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 
 import '../../../constants/constants.dart';
@@ -119,7 +120,10 @@ class LayoutCubit extends Cubit<LayoutStates> {
   void changeBottomNav(int i) {
     if (i == 2 && userModel!.role == 'admin') {
       emit(LayoutNewPostState());
-    } else {
+    } else if(i==1){
+      launchUrl(Uri.parse('https://www.youtube.com/playlist?list=PLIYEUg1D0F4smXoJtfLWJ6IKrKPtoIGuW'),mode: LaunchMode.externalApplication);
+    }
+    else {
       currentIndex = i;
       emit(LayoutChangeBottomNavState());
     }

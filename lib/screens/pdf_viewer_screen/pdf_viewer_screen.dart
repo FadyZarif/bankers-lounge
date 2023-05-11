@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 import 'package:no_screenshot/no_screenshot.dart';
+import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
 import '../../constants/constants.dart';
 import '../../models/material_model.dart';
@@ -33,20 +33,17 @@ class PdfViewerScreen extends StatelessWidget {
             });
           }),
           title: Text(materialModel.name!),
-          actions: <Widget>[
-            IconButton(
-              icon: const Icon(
-                Icons.bookmark,
-                color: Colors.yellow,
-                semanticLabel: 'Bookmark',
-              ),
-              onPressed: () {
-                _pdfViewerKey.currentState?.openBookmarkView();
-              },
-            ),
-          ],
         ),
-        body: SfPdfViewer.network(
+       /* body:  PDF(
+          enableSwipe: true,
+          autoSpacing: false,
+          pageFling: false,
+        ).fromAsset(
+          materialModel.url!,
+          errorWidget: (dynamic error) => Center(child: Text(error.toString())),
+        ),*/
+        body: SfPdfViewer.asset(
+
           materialModel.url!,
           key: _pdfViewerKey,
         ),

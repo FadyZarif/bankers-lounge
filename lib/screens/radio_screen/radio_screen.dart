@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:webview_flutter/webview_flutter.dart';
 
 
 class RadioScreen extends StatelessWidget {
   RadioScreen({Key? key}) : super(key: key);
-  WebViewController? controller;
+  // WebViewController? controller;
   @override
   Widget build(BuildContext context) {
 
-    controller = WebViewController()
+    /*controller = WebViewController()
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
       ..setBackgroundColor(const Color(0x00000000))
       ..setNavigationDelegate(
@@ -52,9 +51,9 @@ class RadioScreen extends StatelessWidget {
         ),
       )
       ..loadRequest(Uri.parse('https://www.youtube.com/playlist?list=PLIYEUg1D0F4smXoJtfLWJ6IKrKPtoIGuW'));
-
+*/
     return Scaffold(
-        body: WebViewWidget(controller: controller!)
+        body: Text('radio')
     );
   }
 }

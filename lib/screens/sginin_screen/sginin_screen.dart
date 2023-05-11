@@ -28,11 +28,11 @@ class SigninScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     FirebaseMessaging.instance.requestPermission(
         alert: true,
-        announcement: true,
+        announcement: false,
         badge: true,
-        carPlay: true,
-        criticalAlert: true,
-        provisional: true,
+        carPlay: false,
+        criticalAlert: false,
+        provisional: false,
         sound: true
     );
     return BlocProvider(
