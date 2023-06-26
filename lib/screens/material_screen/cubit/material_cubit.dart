@@ -25,8 +25,6 @@ class MaterialCubit extends Cubit<MaterialStates>{
       emit(MaterialSuccessState());
     }).catchError((error){
       emit(MaterialErrorState());
-      print('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
-      print(error.toString());
       defToast(msg: error.toString());
     });
   }

@@ -20,7 +20,7 @@ class MaterialItem extends StatelessWidget {
         if (materialModel.isVideo!) {
           Navigator.push(
               context,
-              CenterTransition(VideoViewerScreen(
+              CenterTransition(const VideoViewerScreen(
               )));
         }
         if (materialModel.isPdf!) {
@@ -37,15 +37,15 @@ class MaterialItem extends StatelessWidget {
       child: Container(
         width: double.infinity,
         height: 50,
-        margin: EdgeInsetsDirectional.symmetric(horizontal: 10),
+        margin: const EdgeInsetsDirectional.symmetric(horizontal: 10),
         decoration: BoxDecoration(
-            color: Color(0xff012623), borderRadius: BorderRadius.circular(8)),
+            color: const Color(0xff012623), borderRadius: BorderRadius.circular(8)),
         child: Center(
           child: SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Text(
               materialModel.name!,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Color(0xfff8dca3),
                 fontSize: 18,
                 fontWeight: FontWeight.bold,

@@ -9,12 +9,13 @@ class LoadingButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RoundedLoadingButton(
-      completionDuration: Duration(seconds: 3),
-      resetDuration: Duration(seconds: 3),
-      resetAfterDuration: true,
-      child: Text(text, style: TextStyle(color: Colors.white)),
+      completionDuration: const Duration(seconds: 3),
+      resetDuration: const Duration(seconds: 3),
+      resetAfterDuration: false,
       controller: controller,
       onPressed: onPressed,
+      successColor: Colors.green,
+      child: Text(text, style: const TextStyle(color: Colors.white)),
     );
   }
 }

@@ -22,14 +22,14 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform,);
   token = await FirebaseMessaging.instance.getToken();
-  await FirebaseMessaging.onMessage.listen((event) {
-    print(event.data.toString());
+  FirebaseMessaging.onMessage.listen((event) {
+    // print(event.data.toString());
     // defToast(msg: event.data.toString());
 
   });
 
-  await FirebaseMessaging.onMessageOpenedApp.listen((event) {
-    print(event.data.toString());
+  FirebaseMessaging.onMessageOpenedApp.listen((event) {
+    // print(event.data.toString());
     // defToast(msg: event.data.toString());
   });
 
@@ -40,6 +40,7 @@ void main() async {
   if (user == null) {
     isLogin = false;
   } else {
+    await user.reload();
     uId = user.uid;
     isLogin = true;
   }
@@ -65,7 +66,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Emad Kattara',
         theme: lightTheme,
-        home: MyCustomSplashScreen(screen:isLogin!? MainLayout() : SigninScreen())
+        home: MyCustomSplashScreen(screen:isLogin!? const MainLayout() : const SigninScreen())
       ),
     );
   }

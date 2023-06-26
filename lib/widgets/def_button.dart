@@ -7,7 +7,7 @@ class DefButton extends StatelessWidget {
   final Color textColor = Colors.white;
   final Color? color;
 
-  DefButton({Key? key, required this.text, required this.onPressed, this.color}) : super(key: key);
+  const DefButton({Key? key, required this.text, required this.onPressed, this.color}) : super(key: key);
 
 
   @override
@@ -23,7 +23,7 @@ class DefButton extends StatelessWidget {
       child: MaterialButton(
         onPressed: onPressed,
         child: Text(
-          '$text',
+          text,
           style: TextStyle(
             color: textColor,
           ),

@@ -1,5 +1,4 @@
 import 'package:bankerslounge/screens/sginin_screen/cubit/signin_states.dart';
-import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
@@ -27,13 +26,17 @@ class SigninCubit extends Cubit<SigninStates>{
       FirebaseFirestore.instance.collection('users').doc(value.user!.uid).update({"token":token}).then((value) {
         btnController.success();
         emit(SigninSuccessState());
+        Future.delayed(const Duration(seconds: 3), () {
+          btnController.reset();
+        });
       });
 
     }).catchError((error){
-      print('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
-      print(error.toString());
       btnController.error();
       emit(SigninErrorState(error.message));
+      Future.delayed(const Duration(seconds: 3), () {
+        btnController.reset();
+      });
     });
   }
 
@@ -51,6 +54,6 @@ class SigninCubit extends Cubit<SigninStates>{
   }
 
   final RoundedLoadingButtonController btnController =
-  new RoundedLoadingButtonController();
+  RoundedLoadingButtonController();
 
 }

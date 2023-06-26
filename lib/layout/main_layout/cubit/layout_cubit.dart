@@ -1,14 +1,10 @@
 
-import 'dart:io';
 
-import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconly/iconly.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -28,7 +24,7 @@ class LayoutCubit extends Cubit<LayoutStates> {
 
   UserModel? userModel;
   UserModel? adminModel;
-  List<BottomNavigationBarItem>? BottomNavItems;
+  List<BottomNavigationBarItem>? bottomNavItems;
   List<Widget>? screensList;
   List<String>? titlesList;
 
@@ -39,23 +35,23 @@ class LayoutCubit extends Cubit<LayoutStates> {
       currentUser = userModel;
       await subscribeFirebaseMessaging();
       // getAllUsers();
-      BottomNavItems = [
-        BottomNavigationBarItem(icon: Icon(IconlyBroken.home), label: 'Home'),
-        BottomNavigationBarItem(icon: Icon(IconlyBroken.video), label: 'Radio'),
+      bottomNavItems = [
+        const BottomNavigationBarItem(icon: Icon(IconlyBroken.home), label: 'Home'),
+        const BottomNavigationBarItem(icon: Icon(IconlyBroken.video), label: 'Radio'),
         if(userModel?.role == 'admin')
-        BottomNavigationBarItem(icon: Icon(IconlyBroken.upload), label: 'Post'),
-        BottomNavigationBarItem(icon: Icon(IconlyBroken.paper), label: 'Material'),
+        const BottomNavigationBarItem(icon: Icon(IconlyBroken.upload), label: 'Post'),
+        const BottomNavigationBarItem(icon: Icon(IconlyBroken.paper), label: 'Material'),
         if(userModel?.role == 'admin')
-        BottomNavigationBarItem(icon: Icon(IconlyBroken.user_2), label: 'Users'),
+        const BottomNavigationBarItem(icon: Icon(IconlyBroken.user_2), label: 'Users'),
       ];
       screensList = [
-        FeedsScreen(),
+        const FeedsScreen(),
         RadioScreen(),
         if(userModel?.role == 'admin')
         RadioScreen(),
-        MaterialScreen(),
+        const MaterialScreen(),
         if(userModel?.role == 'admin')
-        UsersLayout()
+        const UsersLayout()
         // NewPostScreen(),
         // UsersScreen(),
         // SettingsScreen(),
@@ -71,8 +67,9 @@ class LayoutCubit extends Cubit<LayoutStates> {
       ];
       emit(LayoutGetUserSuccessState());
     }).onError((error) {
-      print('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
-      print(error.toString());
+      // print('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
+      // print(error.toString());
+      defToast(msg: error.toString());
       emit(LayoutGetUserErrorState(error.message));
     });
   }
@@ -83,7 +80,7 @@ class LayoutCubit extends Cubit<LayoutStates> {
       FirebaseMessaging.instance.subscribeToTopic('students');
       FirebaseMessaging.instance.unsubscribeFromTopic('visitors');
     }
-    if(userModel?.role == 'user'){
+    if(userModel?.role == 'visitor'){
       FirebaseMessaging.instance.subscribeToTopic('visitors');
       FirebaseMessaging.instance.unsubscribeFromTopic('students');
     }
@@ -95,8 +92,9 @@ class LayoutCubit extends Cubit<LayoutStates> {
       adminModel = UserModel.fromJson(value.data()!);
       emit(LayoutGetUserSuccessState());
     }).onError((error) {
-      print('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
-      print(error.toString());
+      // print('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
+      // print(error.toString());
+      defToast(msg: error.toString());
       emit(LayoutGetUserErrorState(error.message));
     });
   }
@@ -108,7 +106,8 @@ class LayoutCubit extends Cubit<LayoutStates> {
         .update({'isOnline': isOnline}).then((value) {
       emit(LayoutSetUserStatusSuccessState());
     }).catchError((error) {
-      print(error.toString());
+      // print(error.toString());
+      defToast(msg: error.toString());
       emit(LayoutSetUserStatusErrorState());
     });
   }

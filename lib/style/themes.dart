@@ -21,7 +21,7 @@ ThemeData lightTheme = ThemeData(
   bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       type: BottomNavigationBarType.fixed, elevation: 20),
   textTheme: const TextTheme(
-      headline1: TextStyle(
+      displayLarge: TextStyle(
           fontSize: 18,
           fontWeight: FontWeight.w800,
           color: Colors.black)),
@@ -50,7 +50,7 @@ ThemeData darkTheme = ThemeData(
         iconTheme: IconThemeData(color: Colors.white)),
     scaffoldBackgroundColor: const Color(0xff333739),
     textTheme: const TextTheme(
-        headline1: TextStyle(
+        displayLarge: TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.bold,
             color: Colors.white)));

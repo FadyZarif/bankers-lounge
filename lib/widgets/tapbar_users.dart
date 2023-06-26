@@ -10,14 +10,14 @@ class TabBarUsers extends StatelessWidget {
     return Row(
       children: [
         Text(text),
-        SizedBox(width: 5,),
+        const SizedBox(width: 5,),
         Container(
             decoration: BoxDecoration(
                 color: Colors.grey[350],
                 borderRadius: BorderRadius.circular(2)
             ),
-            padding: EdgeInsets.symmetric(horizontal: 7,vertical: 3),
-            child: Text('${number}')
+            padding: const EdgeInsets.symmetric(horizontal: 7,vertical: 3),
+            child: Text('$number')
         )
       ],
     );

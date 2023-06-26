@@ -1,7 +1,5 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -9,7 +7,6 @@ import 'package:iconly/iconly.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../constants/constants.dart';
-import '../../screens/create_post_screen/create_post_screen.dart';
 import '../../screens/sginin_screen/sginin_screen.dart';
 import '../../widgets/drawer_info.dart';
 import '../new_post_layout/new_post_layout.dart';
@@ -21,11 +18,11 @@ class MainLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    LayoutCubit cubit = LayoutCubit.get(context);
+    // LayoutCubit cubit = LayoutCubit.get(context);
     //cubit.getUserData();
     return BlocConsumer<LayoutCubit, LayoutStates>(listener: (context, state) {
       if (state is LayoutNewPostState) {
-        Navigator.push(context, BottomScaleTransition(NewPostLayout()));
+        Navigator.push(context, BottomScaleTransition(const NewPostLayout()));
         // navigateTo(context, NewPostLayout());
       }
       if (state is LayoutSignOutSuccessState) {
@@ -54,7 +51,7 @@ class MainLayout extends StatelessWidget {
                       onPressed: () {
                         Scaffold.of(context).openEndDrawer();
                       },
-                      icon: Icon(FontAwesomeIcons.bars));
+                      icon: const Icon(FontAwesomeIcons.bars));
                 })
               ],
             ),
@@ -64,7 +61,7 @@ class MainLayout extends StatelessWidget {
                   Container(
                     height: MediaQuery.of(context).size.height * 0.29,
                     color: Colors.lightBlueAccent,
-                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                     child: Column(
                       verticalDirection: VerticalDirection.up,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -75,7 +72,7 @@ class MainLayout extends StatelessWidget {
                         DrawerInfo(
                             icon: IconlyBold.call,
                             title: cubit.userModel!.phone!),
-                        SizedBox(
+                        const SizedBox(
                           height: 5,
                         ),
                         SingleChildScrollView(
@@ -84,14 +81,14 @@ class MainLayout extends StatelessWidget {
                               icon: IconlyBold.message,
                               title: cubit.userModel!.email!),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
                           child: Text(
                             cubit.userModel!.name!,
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontSize: 26,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.white),
@@ -104,9 +101,9 @@ class MainLayout extends StatelessWidget {
                     splashColor: Colors.lightBlueAccent[100],
 
                     onTap: () {
-                      navigateToReplacement(context, MainLayout());
+                      navigateToReplacement(context, const MainLayout());
                     },
-                    child: ListTile(
+                    child: const ListTile(
                       leading: Icon(
                         Icons.home,
                         color: Colors.lightBlueAccent,
@@ -124,7 +121,7 @@ class MainLayout extends StatelessWidget {
                     splashColor: Colors.lightBlueAccent[100],
 
                     onTap: () {},
-                    child: ListTile(
+                    child: const ListTile(
                       leading: Icon(
                         Icons.headset_mic,
                         color: Colors.lightBlueAccent,
@@ -142,7 +139,7 @@ class MainLayout extends StatelessWidget {
                     splashColor: Colors.lightBlueAccent[100],
 
                     onTap: () {},
-                    child: ListTile(
+                    child: const ListTile(
                       leading: Icon(
                         Icons.group,
                         color: Colors.lightBlueAccent,
@@ -160,7 +157,7 @@ class MainLayout extends StatelessWidget {
                     splashColor: Colors.lightBlueAccent[100],
 
                     onTap: () {},
-                    child: ListTile(
+                    child: const ListTile(
                       leading: Icon(
                         Icons.share,
                         color: Colors.lightBlueAccent,
@@ -178,7 +175,7 @@ class MainLayout extends StatelessWidget {
                     splashColor: Colors.lightBlueAccent[100],
 
                     onTap: () {},
-                    child: ListTile(
+                    child: const ListTile(
                       leading: Icon(
                         Icons.info,
                         color: Colors.lightBlueAccent,
@@ -210,7 +207,7 @@ class MainLayout extends StatelessWidget {
                           btnCancelOnPress: () {})
                           .show();
                     },
-                    child: ListTile(
+                    child: const ListTile(
                       leading: Icon(
                         Icons.logout,
                         color: Colors.lightBlueAccent,
@@ -246,8 +243,8 @@ class MainLayout extends StatelessWidget {
                           height: 1,
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 8.0),
                         child: Text('Contact Us',
                             style: TextStyle(color: Colors.lightBlueAccent)),
                       ),
@@ -273,7 +270,7 @@ class MainLayout extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 5,
                   ),
                   Row(
@@ -283,12 +280,12 @@ class MainLayout extends StatelessWidget {
                           onPressed: () {
                             launchUrl(Uri.parse('https://facebook.com/BankersLoungeAcademy/'),mode: LaunchMode.externalApplication);
                           },
-                          icon: Icon(
+                          icon: const Icon(
                             FontAwesomeIcons.facebook,
                             color: Colors.blue,
                           )),
                       ShaderMask(
-                          shaderCallback: (rect) => LinearGradient(
+                          shaderCallback: (rect) => const LinearGradient(
                                 colors: [
                                   Color(0xFF405DE6),
                                   Color(0xFF5B51D8),
@@ -308,7 +305,7 @@ class MainLayout extends StatelessWidget {
                                         'https://www.instagram.com/bankers.lounge/'),
                                     mode: LaunchMode.externalApplication);
                               },
-                              icon: Icon(
+                              icon: const Icon(
                                 FontAwesomeIcons.instagram,
                                 color: Colors.redAccent,
                               ))),
@@ -319,7 +316,7 @@ class MainLayout extends StatelessWidget {
                                     'https://wa.me/201115778000'),
                                 mode: LaunchMode.externalApplication);
                           },
-                          icon: Icon(
+                          icon: const Icon(
                             FontAwesomeIcons.whatsapp,
                             color: Colors.green,
                           )),
@@ -330,7 +327,7 @@ class MainLayout extends StatelessWidget {
                                     'https://www.youtube.com/@bankersloungechannel2002'),
                                 mode: LaunchMode.externalApplication);
                           },
-                          icon: Icon(
+                          icon: const Icon(
                             FontAwesomeIcons.youtube,
                             color: Colors.red,
                           )),
@@ -341,7 +338,7 @@ class MainLayout extends StatelessWidget {
                                     'https://linkedin.com/company/bankers-lounge/'),
                                 mode: LaunchMode.externalApplication);
                           },
-                          icon: Icon(
+                          icon: const Icon(
                             FontAwesomeIcons.linkedin,
                             color: Colors.blue,
                           )),
@@ -352,7 +349,7 @@ class MainLayout extends StatelessWidget {
                                     'https://goo.gl/maps/be3XXNccXhCjUSSh8'),
                                 mode: LaunchMode.externalApplication);
                           },
-                          icon: Icon(
+                          icon: const Icon(
                             FontAwesomeIcons.locationDot,
                             color: Colors.red,
                           )),
@@ -363,7 +360,7 @@ class MainLayout extends StatelessWidget {
             ),
             body: cubit.screensList?[cubit.currentIndex],
             bottomNavigationBar: BottomNavigationBar(
-              items: cubit.BottomNavItems!,
+              items: cubit.bottomNavItems!,
               onTap: (i) {
                 cubit.changeBottomNav(i);
               },
@@ -372,7 +369,7 @@ class MainLayout extends StatelessWidget {
           );
         },
         fallback: (context) =>
-            Scaffold(body: const Center(child: CircularProgressIndicator())),
+            const Scaffold(body: Center(child: CircularProgressIndicator())),
       );
     });
   }

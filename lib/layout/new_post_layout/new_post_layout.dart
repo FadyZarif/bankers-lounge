@@ -18,8 +18,8 @@ class NewPostLayout extends StatelessWidget {
           child: Scaffold(
             appBar: AppBar(
               toolbarHeight: 10,
-              leading: Icon(Icons.add,color: Colors.transparent,),
-              bottom: TabBar(
+              leading: const Icon(Icons.add,color: Colors.transparent,),
+              bottom: const TabBar(
                 isScrollable: true,
                   tabs: [
                     Tab(text: 'create post',),

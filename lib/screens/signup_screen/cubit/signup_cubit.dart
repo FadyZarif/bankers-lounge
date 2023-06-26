@@ -1,5 +1,4 @@
 import 'package:bankerslounge/screens/signup_screen/cubit/signup_states.dart';
-import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -35,10 +34,11 @@ class SignupCubit extends Cubit<SignupState> {
         isRequested: false,
       );
     }).catchError((error) {
-      print('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
-      print(error.toString());
       controller.error();
       emit(SignupErrorState(error.message));
+      Future.delayed(const Duration(seconds: 3), () {
+        controller.reset();
+      });
     });
   }
 
@@ -69,9 +69,10 @@ class SignupCubit extends Cubit<SignupState> {
         .then((value) {
           controller.success();
       emit(CreateSuccessState(uId));
+          Future.delayed(const Duration(seconds: 3), () {
+            controller.reset();
+          });
     }).catchError((error) {
-      print('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
-      print(error.toString());
       controller.error();
       emit(CreateErrorState(error.message));
     });
@@ -98,6 +99,6 @@ class SignupCubit extends Cubit<SignupState> {
 
   }
 
-  RoundedLoadingButtonController controller = new RoundedLoadingButtonController();
+  RoundedLoadingButtonController controller =  RoundedLoadingButtonController();
 
 }

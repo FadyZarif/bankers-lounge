@@ -10,18 +10,19 @@ import '../../layout/new_post_layout/cubit/new_post_cubit.dart';
 import '../../layout/new_post_layout/cubit/new_post_states.dart';
 
 class CreateNotificationScreen extends StatelessWidget {
-  CreateNotificationScreen({Key? key}) : super(key: key);
+  const CreateNotificationScreen({Key? key}) : super(key: key);
 
-  TextEditingController notificationTitleController = TextEditingController();
-  TextEditingController notificationBodyController = TextEditingController();
-  final List<String> items = [
-    'allUsers',
-    'students',
-    'visitors',
-  ];
+
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController notificationTitleController = TextEditingController();
+    TextEditingController notificationBodyController = TextEditingController();
+    final List<String> items = [
+      'allUsers',
+      'students',
+      'visitors',
+    ];
     LayoutCubit layoutCubit = LayoutCubit.get(context);
 
     return BlocConsumer<NewPostCubit, NewPostStates>(
@@ -88,7 +89,7 @@ class CreateNotificationScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 SizedBox(
@@ -100,15 +101,15 @@ class CreateNotificationScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 SizedBox(
                   width: double.infinity,
                   child: Row(
                     children: [
-                      Icon(IconlyBroken.graph,color: Colors.grey,),
-                      SizedBox(
+                      const Icon(IconlyBroken.graph,color: Colors.grey,),
+                      const SizedBox(
                         width: 15,
                       ),
                       Expanded(
@@ -201,14 +202,14 @@ class CreateNotificationScreen extends StatelessWidget {
                   onPressed: () {
                     cubit.getNotificationImage();
                   },
-                  child: Row(
+                  child: const Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Icon(IconlyBroken.image),
-                      const SizedBox(
+                      Icon(IconlyBroken.image),
+                      SizedBox(
                         width: 5,
                       ),
-                      const Text('add photo'),
+                      Text('add photo'),
                     ],
                   )),
             ],

@@ -9,14 +9,15 @@ import '../../layout/new_post_layout/cubit/new_post_cubit.dart';
 import '../../layout/new_post_layout/cubit/new_post_states.dart';
 
 class CreatePostScreen extends StatelessWidget {
-  CreatePostScreen({Key? key}) : super(key: key);
+  const CreatePostScreen({Key? key}) : super(key: key);
 
-  TextEditingController postTextController = TextEditingController();
-  TextEditingController postUrlController = TextEditingController();
-  GlobalKey<FormState> formKey = GlobalKey();
+
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController postTextController = TextEditingController();
+    TextEditingController postUrlController = TextEditingController();
+    GlobalKey<FormState> formKey = GlobalKey();
     LayoutCubit layoutCubit = LayoutCubit.get(context);
     return BlocConsumer<NewPostCubit, NewPostStates>(
         listener: (context, state) {
@@ -34,7 +35,7 @@ class CreatePostScreen extends StatelessWidget {
     }, builder: (context, state) {
       NewPostCubit cubit = NewPostCubit.get(context);
       return Scaffold(
-        appBar: AppBar(title: Text('Create Post'), actions: [
+        appBar: AppBar(title: const Text('Create Post'), actions: [
           TextButton(
               onPressed: () {
                 if (formKey.currentState!.validate()) {
@@ -79,7 +80,7 @@ class CreatePostScreen extends StatelessWidget {
                     child: TextFormField(
                         controller: postTextController,
                         maxLines: 7,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           border: InputBorder.none,
                           hintText:
                               'what is on your mind, Emad Kattara - عماد قطارة ?',
@@ -97,7 +98,7 @@ class CreatePostScreen extends StatelessWidget {
                     height: MediaQuery.of(context).size.height / 10,
                     child: TextFormField(
                       controller: postUrlController,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         icon: Icon(IconlyBroken.arrow_up_square),
                         hintText: 'Redirct Url',
                       ),
@@ -151,14 +152,14 @@ class CreatePostScreen extends StatelessWidget {
                   onPressed: () {
                     cubit.getPostImage();
                   },
-                  child: Row(
+                  child: const Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Icon(IconlyBroken.image),
-                      const SizedBox(
+                      Icon(IconlyBroken.image),
+                      SizedBox(
                         width: 5,
                       ),
-                      const Text('add photo'),
+                      Text('add photo'),
                     ],
                   )),
             ],

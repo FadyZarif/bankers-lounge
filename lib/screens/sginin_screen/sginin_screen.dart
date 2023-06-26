@@ -2,7 +2,6 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../constants/constants.dart';
@@ -18,14 +17,15 @@ import 'cubit/signin_states.dart';
 
 
 class SigninScreen extends StatelessWidget {
-  SigninScreen({Key? key}) : super(key: key);
+  const SigninScreen({Key? key}) : super(key: key);
 
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-  GlobalKey<FormState> formKey = GlobalKey();
+
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController emailController = TextEditingController();
+    TextEditingController passwordController = TextEditingController();
+    GlobalKey<FormState> formKey = GlobalKey();
     FirebaseMessaging.instance.requestPermission(
         alert: true,
         announcement: false,
@@ -73,13 +73,13 @@ class SigninScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
-                          padding: EdgeInsets.all(20),
-                          margin: EdgeInsets.symmetric(horizontal: 40,vertical: 20),
-                          child: Image.asset('assets/logo2.png'),
+                          padding: const EdgeInsets.all(20),
+                          margin: const EdgeInsets.symmetric(horizontal: 40,vertical: 20),
                           decoration: BoxDecoration(
                             color: Colors.lightBlueAccent,
                             borderRadius: BorderRadius.circular(5) 
                           ),
+                          child: Image.asset('assets/logo2.png'),
                         ),
                         const Text("Signin",
                           style: TextStyle(
@@ -93,7 +93,7 @@ class SigninScreen extends StatelessWidget {
                           style: TextStyle(
                               fontSize: 17
                           ),),
-                        Text('Banker\'s Lounge.',style: TextStyle(color: Colors.lightBlueAccent,fontSize: 18),),
+                        const Text('Banker\'s Lounge.',style: TextStyle(color: Colors.lightBlueAccent,fontSize: 18),),
                         const SizedBox(
                           height: 40,
                         ),
@@ -144,11 +144,14 @@ class SigninScreen extends StatelessWidget {
                             text: 'Sign In',
                             controller: cubit.btnController,
                             onPressed: () {
-                              FocusScope.of(context).requestFocus(new FocusNode());
+                              FocusScope.of(context).requestFocus(FocusNode());
                               if(formKey.currentState!.validate()){
                                 cubit.userSignin(email: emailController.text, password: passwordController.text);
                               }else{
                                 cubit.btnController.error();
+                                Future.delayed(const Duration(seconds: 3), () {
+                                  cubit.btnController.reset();
+                                });
                               }
                             }
                         ),
@@ -161,7 +164,7 @@ class SigninScreen extends StatelessWidget {
                             const Text('Don\'t have an account?'),
                             TextButton(
                               onPressed: () {
-                                navigateToReplacement(context,  SignupScreen());
+                                navigateToReplacement(context,  const SignupScreen());
                               },
                               child: const Text(
                                 'Register Now',

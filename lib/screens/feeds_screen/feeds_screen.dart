@@ -32,11 +32,12 @@ class FeedsScreen extends StatelessWidget {
                           itemBuilder: (context, index) {
                             return InkWell(
                               onTap: ()async{
-                                if(feedsCubit.adsBannerList![index].bannerWebUrl != null)
-                                await launchUrl(
+                                if(feedsCubit.adsBannerList![index].bannerWebUrl != null) {
+                                  await launchUrl(
                                     Uri.parse(feedsCubit.adsBannerList![index].bannerWebUrl!),
                                     mode: LaunchMode.externalApplication
                                 );
+                                }
                               },
                               child: FancyShimmerImage(
                                 imageUrl: feedsCubit.adsBannerList![index].bannerImgUrl!,
@@ -52,14 +53,14 @@ class FeedsScreen extends StatelessWidget {
                           indicatorLayout: PageIndicatorLayout.SCALE,
                           autoplay: true,
                           itemCount: feedsCubit.adsBannerList!.length,
-                          pagination: SwiperPagination(
+                          pagination: const SwiperPagination(
                               builder: DotSwiperPaginationBuilder(
                                 color: Colors.white,
                               )
                           ),
                         )
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     ListView.separated(
@@ -79,7 +80,7 @@ class FeedsScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              fallback:(context)=> Center(child: CircularProgressIndicator()),
+              fallback:(context)=> const Center(child: CircularProgressIndicator()),
             )
         );
       } ,

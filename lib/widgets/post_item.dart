@@ -81,14 +81,14 @@ class PostItem extends StatelessWidget {
                       ),
                       Text(
                         '${DateFormat.yMMMMd().format(DateTime.parse(postModel.dateTime!))} at ${DateFormat.jm().format(DateTime.parse(postModel.dateTime!))}',
-                        style: Theme.of(context).textTheme.caption,
+                        style: Theme.of(context).textTheme.bodySmall,
                       ),
                     ],
                   ),
                   const Spacer(),
                   if (LayoutCubit.get(context).userModel!.role! == 'admin')
                     IconButton(
-                      icon:  Icon(IconlyBroken.delete,size: 22,color: Colors.red,),
+                      icon:  const Icon(IconlyBroken.delete,size: 22,color: Colors.red,),
                       onPressed: () {
                         AwesomeDialog(
                             context: context,

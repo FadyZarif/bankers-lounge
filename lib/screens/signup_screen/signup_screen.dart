@@ -16,50 +16,51 @@ import 'cubit/signup_cubit.dart';
 
 
 class SignupScreen extends StatelessWidget {
-  SignupScreen({Key? key}) : super(key: key);
+  const SignupScreen({Key? key}) : super(key: key);
 
-  TextEditingController nameController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController phoneController = TextEditingController(text: '01');
-  TextEditingController passwordController = TextEditingController();
-  GlobalKey<FormState> formKey = GlobalKey();
 
-  final List<String> items = [
-    'القاهرة',
-    'الجيزة',
-    'الشرقية',
-    'الدقهلية',
-    'البحيرة',
-    'القليوبية',
-    'المنيا',
-    'الإسكندرية',
-    'سوهاج',
-    'الغربية',
-    'أسيوط',
-    'المنوفية',
-    'الفيوم',
-    'كفر الشيخ',
-    'قنا',
-    '	بني سويف',
-    'دمياط',
-    'أسوان',
-    'الإسماعيلية',
-    'الأقصر',
-    'بورسعيد',
-    '	السويس',
-    'شمال سيناء',
-    'مطروح',
-    'البحر الأحمر',
-    'الوادي الجديد',
-    'جنوب سيناء',
-  ];
-  final TextEditingController textEditingController = TextEditingController();
 
 
 
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController nameController = TextEditingController();
+    TextEditingController emailController = TextEditingController();
+    TextEditingController phoneController = TextEditingController(text: '01');
+    TextEditingController passwordController = TextEditingController();
+    GlobalKey<FormState> formKey = GlobalKey();
+
+    final List<String> items = [
+      'القاهرة',
+      'الجيزة',
+      'الشرقية',
+      'الدقهلية',
+      'البحيرة',
+      'القليوبية',
+      'المنيا',
+      'الإسكندرية',
+      'سوهاج',
+      'الغربية',
+      'أسيوط',
+      'المنوفية',
+      'الفيوم',
+      'كفر الشيخ',
+      'قنا',
+      '	بني سويف',
+      'دمياط',
+      'أسوان',
+      'الإسماعيلية',
+      'الأقصر',
+      'بورسعيد',
+      '	السويس',
+      'شمال سيناء',
+      'مطروح',
+      'البحر الأحمر',
+      'الوادي الجديد',
+      'جنوب سيناء',
+    ];
+    final TextEditingController textEditingController = TextEditingController();
     return BlocProvider(
       create: (context)=>SignupCubit(),
       child: BlocConsumer<SignupCubit,SignupState>(
@@ -95,7 +96,7 @@ class SignupScreen extends StatelessWidget {
           SignupCubit cubit = SignupCubit.get(context);
           return GestureDetector(
             onTap: () {
-              FocusScope.of(context).requestFocus(new FocusNode());
+              FocusScope.of(context).requestFocus(FocusNode());
             },
             child: Scaffold(
               appBar: AppBar(),
@@ -117,7 +118,7 @@ class SignupScreen extends StatelessWidget {
                           const SizedBox(
                             height: 20,
                           ),
-                          const Text("Join Banker\'s Lounge app today and grow!",
+                          const Text("Join Banker's Lounge app today and grow!",
                             style: TextStyle(
                                 fontSize: 17,
                             ),),
@@ -173,7 +174,7 @@ class SignupScreen extends StatelessWidget {
                               validator: (value){
                                 if(value!.isEmpty){
                                   return 'please enter password';
-                                }else if(value!.length < 6){
+                                }else if(value.length < 6){
                                   return 'must be 6 digit';
                                 } else {
                                   return null;
@@ -193,7 +194,7 @@ class SignupScreen extends StatelessWidget {
                               validator: (value){
                                 if(value!.isEmpty ){
                                   return 'please enter your phone';
-                                }else if(value!.length != 11){
+                                }else if(value.length != 11){
                                   return 'please enter real number';
                                 }else {
                                   return null;
@@ -211,7 +212,7 @@ class SignupScreen extends StatelessWidget {
                           ),
                           Container(
                             width: double.infinity,
-                            padding: EdgeInsets.symmetric(horizontal: 6,vertical: 8),
+                            padding: const EdgeInsets.symmetric(horizontal: 6,vertical: 8),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(5),
                               border: Border.all(
@@ -224,12 +225,12 @@ class SignupScreen extends StatelessWidget {
                                 isExpanded: true,
                                 hint: Row(
                                   children: [
-                                    Icon(
+                                    const Icon(
                                       Icons.location_city,
                                       size: 24,
                                       color: Colors.grey,
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 10
                                     ),
                                     Expanded(
@@ -317,7 +318,7 @@ class SignupScreen extends StatelessWidget {
                           LoadingButton(
                               controller: cubit.controller,
                               onPressed: (){
-                                FocusScope.of(context).requestFocus(new FocusNode());
+                                FocusScope.of(context).requestFocus(FocusNode());
                                 if(formKey.currentState!.validate()){
                                   if(cubit.selectedValue!=null){
                                     cubit.newRegistration(
@@ -331,9 +332,15 @@ class SignupScreen extends StatelessWidget {
                                   }else{
                                     cubit.controller.error();
                                     defToast2(context: context, msg: 'Please Select City', dialogType: DialogType.error,);
+                                    Future.delayed(const Duration(seconds: 3), () {
+                                      cubit.controller.reset();
+                                    });
                                   }
                                 }else{
                                   cubit.controller.error();
+                                  Future.delayed(const Duration(seconds: 3), () {
+                                    cubit.controller.reset();
+                                  });
                                 }
                               },
                               text: 'Sign Up'
@@ -347,7 +354,7 @@ class SignupScreen extends StatelessWidget {
                               const Text('Already have account?'),
                               TextButton(
                                 onPressed: () {
-                                  navigateToReplacement(context,  SigninScreen());
+                                  navigateToReplacement(context,  const SigninScreen());
                                 },
                                 child: const Text(
                                   'Login Now',

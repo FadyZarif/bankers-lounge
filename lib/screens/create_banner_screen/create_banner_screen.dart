@@ -9,12 +9,12 @@ import '../../layout/new_post_layout/cubit/new_post_cubit.dart';
 import '../../layout/new_post_layout/cubit/new_post_states.dart';
 
 class CreateBannerScreen extends StatelessWidget {
-  TextEditingController bannerUrlController = TextEditingController();
 
-  CreateBannerScreen({Key? key}) : super(key: key);
+  const CreateBannerScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController bannerUrlController = TextEditingController();
     LayoutCubit layoutCubit = LayoutCubit.get(context);
     return BlocConsumer<NewPostCubit, NewPostStates>(
         listener: (context, state) {
@@ -124,14 +124,14 @@ class CreateBannerScreen extends StatelessWidget {
                   onPressed: () {
                     cubit.getBannerImage();
                   },
-                  child: Row(
+                  child: const Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Icon(IconlyBroken.image),
-                      const SizedBox(
+                      Icon(IconlyBroken.image),
+                      SizedBox(
                         width: 5,
                       ),
-                      const Text('add photo'),
+                      Text('add photo'),
                     ],
                   )),
             ],

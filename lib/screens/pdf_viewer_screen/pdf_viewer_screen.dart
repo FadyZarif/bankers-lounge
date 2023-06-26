@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:no_screenshot/no_screenshot.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
 import '../../constants/constants.dart';
@@ -17,7 +16,7 @@ class PdfViewerScreen extends StatelessWidget {
     // _noScreenshot.screenshotOff();
     noScreenshot.screenshotOff();
 
-    final GlobalKey<SfPdfViewerState> _pdfViewerKey = GlobalKey();
+    final GlobalKey<SfPdfViewerState> pdfViewerKey = GlobalKey();
     return WillPopScope(
       onWillPop: () async {
         noScreenshot.screenshotOn().then((value) {
@@ -45,7 +44,7 @@ class PdfViewerScreen extends StatelessWidget {
         body: SfPdfViewer.asset(
 
           materialModel.url!,
-          key: _pdfViewerKey,
+          key: pdfViewerKey,
         ),
       ),
     );

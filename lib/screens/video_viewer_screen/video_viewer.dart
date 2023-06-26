@@ -1,8 +1,8 @@
+
 import 'package:appinio_video_player/appinio_video_player.dart';
+import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:video_player/video_player.dart';
 
 import '../../constants/constants.dart';
 
@@ -18,6 +18,8 @@ class _VideoViewerScreenState extends State<VideoViewerScreen> {
   late VideoPlayerController videoPlayerController;
   late CustomVideoPlayerController _customVideoPlayerController;
 
+  bool? isLoaded ;
+
   String videoUrl =
       "https://streamable.com/l/wum3z1/mp4.mp4";
 
@@ -26,12 +28,15 @@ class _VideoViewerScreenState extends State<VideoViewerScreen> {
     super.initState();
     noScreenshot.screenshotOff();
     videoPlayerController = VideoPlayerController.network(videoUrl)
-      ..initialize().then((value) => setState(() {}));
+      ..initialize().then((value) => setState(() {
+        isLoaded = true;
+      }));
     _customVideoPlayerController = CustomVideoPlayerController(
-      customVideoPlayerSettings: CustomVideoPlayerSettings(alwaysShowThumbnailOnVideoPaused: true,),
+      customVideoPlayerSettings: const CustomVideoPlayerSettings(alwaysShowThumbnailOnVideoPaused: true,),
       context: context,
       videoPlayerController: videoPlayerController,
     );
+
   }
 
   @override
@@ -78,11 +83,15 @@ class _VideoViewerScreenState extends State<VideoViewerScreen> {
                   height: 20,
                 ),
                 Center(
-                  child: CustomVideoPlayer(
-                      customVideoPlayerController: _customVideoPlayerController
+                  child: ConditionalBuilder(
+                    condition: isLoaded??false,
+                    fallback: (context)=>const CircularProgressIndicator(),
+                    builder:(context)=> CustomVideoPlayer(
+                        customVideoPlayerController: _customVideoPlayerController
+                    ),
                   ),
                 ),
-                Container(
+                SizedBox(
                     width: double.infinity,
                     child: Image.asset('assets/player.png')),
               ],

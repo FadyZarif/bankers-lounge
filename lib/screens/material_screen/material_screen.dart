@@ -1,17 +1,12 @@
-import 'package:bankerslounge/constants/constants.dart';
 import 'package:bankerslounge/layout/main_layout/cubit/layout_cubit.dart';
 import 'package:bankerslounge/models/material_model.dart';
 import 'package:bankerslounge/style/themes.dart';
-import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../widgets/def_button.dart';
 import '../../widgets/material_item.dart';
 import 'cubit/material_cubit.dart';
-import 'cubit/material_states.dart';
 
 class MaterialScreen extends StatelessWidget {
   const MaterialScreen({Key? key}) : super(key: key);

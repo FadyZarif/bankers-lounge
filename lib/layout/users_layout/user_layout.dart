@@ -15,7 +15,6 @@ class UsersLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     UsersCubit cubit = UsersCubit.get(context);
     if (cubit.allUsers == null) {
-      print('xxxxxxxxxxxxxx');
       cubit.getAllUsers();
     }
     TextEditingController searchEditingController = cubit.searchEditingController;
@@ -29,7 +28,7 @@ class UsersLayout extends StatelessWidget {
               length: 4,
               child: GestureDetector(
                 onTap: () {
-                  FocusScope.of(context).requestFocus(new FocusNode());
+                  FocusScope.of(context).requestFocus(FocusNode());
                 },
                 child: Scaffold(
                   appBar: AppBar(
@@ -53,10 +52,10 @@ class UsersLayout extends StatelessWidget {
                     title: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Icon(
+                        const Icon(
                           IconlyBroken.search,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 15,
                         ),
                         Expanded(
@@ -65,7 +64,7 @@ class UsersLayout extends StatelessWidget {
                             onChanged: (q){
                               cubit.search(q);
                               },
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               hintText: 'Search...',
                               border: InputBorder.none,
                             ),
@@ -94,7 +93,7 @@ class UsersLayout extends StatelessWidget {
               ),
             );
           },
-          fallback: (context) => Center(
+          fallback: (context) => const Center(
             child: CircularProgressIndicator(),
           ),
         );

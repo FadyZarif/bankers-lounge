@@ -6,6 +6,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../../../constants/constants.dart';
 import '../../../models/ads_banner_model.dart';
 import '../../../models/post_model.dart';
 import '../../../network/remote/dio_helper.dart';
@@ -28,7 +29,8 @@ class NewPostCubit extends Cubit<NewPostStates> {
       postImage = File(pickedFile.path);
       emit(NewPostPostImgPickedSuccessState());
     } else {
-      print('No Image Selected');
+      // print('No Image Selected');
+      defToast(msg: 'No Image Selected');
       emit(NewPostPostImgPickedErrorState());
     }
   }
@@ -44,7 +46,7 @@ class NewPostCubit extends Cubit<NewPostStates> {
       bannerImage = File(pickedFile.path);
       emit(NewPostBannerImgPickedSuccessState());
     } else {
-      print('No Image Selected');
+      defToast(msg: 'No Image Selected');
       emit(NewPostBannerImgPickedErrorState());
     }
   }
@@ -60,7 +62,8 @@ class NewPostCubit extends Cubit<NewPostStates> {
       notificationImage = File(pickedFile.path);
       emit(NewPostNotificationImgPickedSuccessState());
     } else {
-      print('No Image Selected');
+      // print('No Image Selected');
+      defToast(msg: 'No Image Selected');
       emit(NewPostNotificationImgPickedErrorState());
     }
   }
@@ -70,7 +73,6 @@ class NewPostCubit extends Cubit<NewPostStates> {
       postImage = null;
       emit(NewPostPostImgDeletedSuccessState());
     } else {
-      print('No Image');
       emit(NewPostPostImgDeletedErrorState());
     }
   }
@@ -80,7 +82,6 @@ class NewPostCubit extends Cubit<NewPostStates> {
       bannerImage = null;
       emit(NewPostBannerImgDeletedSuccessState());
     } else {
-      print('No Image');
       emit(NewPostBannerImgDeletedErrorState());
     }
   }
@@ -90,7 +91,6 @@ class NewPostCubit extends Cubit<NewPostStates> {
       notificationImage = null;
       emit(NewPostNotificationImgDeletedSuccessState());
     } else {
-      print('No Image');
       emit(NewPostNotificationImgDeletedErrorState());
     }
   }
@@ -122,7 +122,7 @@ class NewPostCubit extends Cubit<NewPostStates> {
                 image: postModel.postImage);
             emit(NewPostCreatePostSuccessState());
           }).catchError((error) {
-            print('xxxxxxxxxxxxxxxx');
+            defToast(msg: error.toString());
             emit(NewPostCreatePostErrorState(error));
           });
         });
@@ -142,7 +142,7 @@ class NewPostCubit extends Cubit<NewPostStates> {
             body: postModel.postText);
         emit(NewPostCreatePostSuccessState());
       }).catchError((error) {
-        print('xxxxxxxxxxxxxxxx');
+        defToast(msg: error.toString());
         emit(NewPostCreatePostErrorState(error));
       });
     }
@@ -166,10 +166,9 @@ class NewPostCubit extends Cubit<NewPostStates> {
               .collection('adsBanner')
               .add(bannerModel.toJson())
               .then((value) {
-            print(value);
             emit(NewPostCreateBannerSuccessState());
           }).catchError((error) {
-            print('xxxxxxxxxxxxxxxx');
+            defToast(msg: error.toString());
             emit(NewPostCreateBannerErrorState());
           });
         });
@@ -180,7 +179,6 @@ class NewPostCubit extends Cubit<NewPostStates> {
   void createNewNotification({String? title,String? body,required String topic}){
     emit(NewPostCreateNotificationLoadingState());
     if(notificationImage != null){
-      print('goooooooooooooooooood');
       FirebaseStorage.instance
           .ref()
           .child('notifications/${Uri.file(notificationImage!.path).pathSegments.length}')
@@ -190,19 +188,19 @@ class NewPostCubit extends Cubit<NewPostStates> {
               DioHelper.sendNotification(token: '/topics/$topic', title: title, body: body,image: value).then((value){
                 emit(NewPostCreateNotificationSuccessState());
               }).catchError((onError){
-                print('xxxxxxxxxxxxxxxx');
+                defToast(msg: onError.toString());
                 emit(NewPostCreateNotificationErrorState());
               });
             });
       }).catchError((onError){
-        print('xxxxxxxxxxxxxxxx');
+        defToast(msg: onError.toString());
         emit(NewPostCreateNotificationErrorState());
       });
     }else{
       DioHelper.sendNotification(token: '/topics/$topic', title: title, body: body).then((value){
         emit(NewPostCreateNotificationSuccessState());
       }).catchError((onError){
-        print('xxxxxxxxxxxxxxxx');
+        defToast(msg: onError.toString());
         emit(NewPostCreateNotificationErrorState());
       });
     }
