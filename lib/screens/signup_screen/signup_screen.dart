@@ -47,18 +47,17 @@ class SignupScreen extends StatelessWidget {
       'الفيوم',
       'كفر الشيخ',
       'قنا',
-      '	بني سويف',
+      'بني سويف',
       'دمياط',
       'أسوان',
       'الإسماعيلية',
       'الأقصر',
       'بورسعيد',
       '	السويس',
-      'شمال سيناء',
+      'سيناء',
       'مطروح',
       'البحر الأحمر',
       'الوادي الجديد',
-      'جنوب سيناء',
     ];
     final TextEditingController textEditingController = TextEditingController();
     return BlocProvider(

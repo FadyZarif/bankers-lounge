@@ -66,6 +66,7 @@ dependencies:
   video_player: ^2.6.1
   #flutter_pdfview: ^1.2.9
   appinio_video_player: ^1.2.1
+  better_player: ^0.0.83
 
 flutter_icons:
   android: "launcher_icon"

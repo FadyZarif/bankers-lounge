@@ -40,7 +40,6 @@ void main() async {
   if (user == null) {
     isLogin = false;
   } else {
-    await user.reload();
     uId = user.uid;
     isLogin = true;
   }

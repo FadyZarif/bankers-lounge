@@ -75,6 +75,8 @@ class LayoutCubit extends Cubit<LayoutStates> {
   }
 
   Future<void> subscribeFirebaseMessaging() async {
+    await FirebaseMessaging.instance.deleteToken();
+    await FirebaseMessaging.instance.getToken();
     FirebaseMessaging.instance.subscribeToTopic('allUsers');
     if(userModel?.role == 'student'){
       FirebaseMessaging.instance.subscribeToTopic('students');
@@ -84,6 +86,63 @@ class LayoutCubit extends Cubit<LayoutStates> {
       FirebaseMessaging.instance.subscribeToTopic('visitors');
       FirebaseMessaging.instance.unsubscribeFromTopic('students');
     }
+    if(userModel?.city == 'القاهرة'){
+      FirebaseMessaging.instance.subscribeToTopic('Cairo');
+    }else if(userModel?.city == 'الجيزة'){
+      FirebaseMessaging.instance.subscribeToTopic('Gizeh');
+    }else if(userModel?.city == 'الشرقية'){
+      FirebaseMessaging.instance.subscribeToTopic('Sharqia');
+    }else if(userModel?.city == 'الدقهلية'){
+      FirebaseMessaging.instance.subscribeToTopic('Dakahlia');
+    }else if(userModel?.city == 'البحيرة'){
+      FirebaseMessaging.instance.subscribeToTopic('Beheira');
+    }else if(userModel?.city == 'القليوبية'){
+      FirebaseMessaging.instance.subscribeToTopic('Qalyubia');
+    }else if(userModel?.city == 'المنيا'){
+      FirebaseMessaging.instance.subscribeToTopic('Minya');
+    }else if(userModel?.city == 'الإسكندرية'){
+      FirebaseMessaging.instance.subscribeToTopic('Alex');
+    }else if(userModel?.city == 'سوهاج'){
+      FirebaseMessaging.instance.subscribeToTopic('Sohag');
+    }else if(userModel?.city == 'الغربية'){
+      FirebaseMessaging.instance.subscribeToTopic('Gharbia');
+    }else if(userModel?.city == 'أسيوط'){
+      FirebaseMessaging.instance.subscribeToTopic('Asyut');
+    }else if(userModel?.city == 'المنوفية'){
+      FirebaseMessaging.instance.subscribeToTopic('Menofia');
+    }else if(userModel?.city == 'الفيوم'){
+      FirebaseMessaging.instance.subscribeToTopic('Fayyum');
+    }else if(userModel?.city == 'كفر الشيخ'){
+      FirebaseMessaging.instance.subscribeToTopic('Kafr');
+    }else if(userModel?.city == 'قنا'){
+      FirebaseMessaging.instance.subscribeToTopic('Qena');
+    }else if(userModel?.city == 'بني سويف'){
+      FirebaseMessaging.instance.subscribeToTopic('BeniSuef');
+    }else if(userModel?.city == 'دمياط'){
+      FirebaseMessaging.instance.subscribeToTopic('Damietta');
+    }else if(userModel?.city == 'أسوان'){
+      FirebaseMessaging.instance.subscribeToTopic('Aswan');
+    }else if(userModel?.city == 'الإسماعيلية'){
+      FirebaseMessaging.instance.subscribeToTopic('Ismailia');
+    }else if(userModel?.city == 'الأقصر'){
+      FirebaseMessaging.instance.subscribeToTopic('Luxor');
+    }else if(userModel?.city == 'بورسعيد'){
+      FirebaseMessaging.instance.subscribeToTopic('PortSaid');
+    }else if(userModel?.city == 'السويس'){
+      print('Suez');
+      FirebaseMessaging.instance.subscribeToTopic('Suez');
+    }else if(userModel?.city == 'سيناء'){
+      FirebaseMessaging.instance.subscribeToTopic('Sinai');
+    }else if(userModel?.city == 'مطروح'){
+      FirebaseMessaging.instance.subscribeToTopic('Matruh');
+    }else if(userModel?.city == 'البحر الأحمر'){
+      FirebaseMessaging.instance.subscribeToTopic('RedSea');
+    }else if(userModel?.city == 'الوادي الجديد'){
+      FirebaseMessaging.instance.subscribeToTopic('NewValley');
+    }else{
+
+    }
+
   }
 
   void getAdminData() {

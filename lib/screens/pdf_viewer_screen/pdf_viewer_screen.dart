@@ -41,11 +41,22 @@ class PdfViewerScreen extends StatelessWidget {
           materialModel.url!,
           errorWidget: (dynamic error) => Center(child: Text(error.toString())),
         ),*/
-        body: SfPdfViewer.asset(
+        body: OrientationBuilder(
+          builder: (context,orientation){
+            if(orientation == Orientation.portrait){
+              print('portrait');
+              noScreenshot.screenshotOff();
 
-          materialModel.url!,
-          key: pdfViewerKey,
-        ),
+            }else{
+              print('landscape');
+              noScreenshot.screenshotOff();
+
+            }
+         return SfPdfViewer.asset(
+            materialModel.url!,
+            key: pdfViewerKey,
+          );
+        })
       ),
     );
   }

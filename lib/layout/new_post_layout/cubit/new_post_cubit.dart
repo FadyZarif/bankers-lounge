@@ -178,6 +178,61 @@ class NewPostCubit extends Cubit<NewPostStates> {
 
   void createNewNotification({String? title,String? body,required String topic}){
     emit(NewPostCreateNotificationLoadingState());
+    if(topic == 'القاهرة'){
+      topic ='Cairo';
+    }else if(topic == 'الجيزة'){
+      topic ='Gizeh';
+    }else if(topic == 'الشرقية'){
+      topic ='Sharqia';
+    }else if(topic == 'الدقهلية'){
+      topic ='Dakahlia';
+    }else if(topic == 'البحيرة'){
+      topic ='Beheira';
+    }else if(topic == 'القليوبية'){
+      topic ='Qalyubia';
+    }else if(topic == 'المنيا'){
+      topic ='Minya';
+    }else if(topic == 'الإسكندرية'){
+      topic ='Alex';
+    }else if(topic == 'سوهاج'){
+      topic ='Sohag';
+    }else if(topic == 'الغربية'){
+      topic ='Gharbia';
+    }else if(topic == 'أسيوط'){
+      topic ='Asyut';
+    }else if(topic == 'المنوفية'){
+      topic ='Menofia';
+    }else if(topic == 'الفيوم'){
+      topic ='Fayyum';
+    }else if(topic == 'كفر الشيخ'){
+      topic ='Kafr';
+    }else if(topic == 'قنا'){
+      topic ='Qena';
+    }else if(topic == 'بني سويف'){
+      topic ='BeniSuef';
+    }else if(topic == 'دمياط'){
+      topic ='Damietta';
+    }else if(topic == 'أسوان'){
+      topic ='Aswan';
+    }else if(topic == 'الإسماعيلية'){
+      topic ='Ismailia';
+    }else if(topic == 'الأقصر'){
+      topic ='Luxor';
+    }else if(topic == 'بورسعيد'){
+      topic ='PortSaid';
+    }else if(topic == 'السويس'){
+      topic ='Suez';
+    }else if(topic == 'سيناء'){
+      topic ='Sinai';
+    }else if(topic == 'مطروح'){
+      topic ='Matruh';
+    }else if(topic == 'البحر الأحمر'){
+      topic ='RedSea';
+    }else if(topic == 'الوادي الجديد'){
+      topic ='NewValley';
+    }else{
+      topic = topic;
+    }
     if(notificationImage != null){
       FirebaseStorage.instance
           .ref()
