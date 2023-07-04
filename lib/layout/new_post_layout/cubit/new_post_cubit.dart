@@ -97,7 +97,6 @@ class NewPostCubit extends Cubit<NewPostStates> {
 
   void createNewPost({String? postText, String? postUrl}) {
     emit(NewPostCreatePostLoadingState());
-
     if (postImage != null) {
       FirebaseStorage.instance
           .ref()

@@ -31,7 +31,7 @@ class MainLayout extends StatelessWidget {
     }, builder: (context, state) {
       LayoutCubit cubit = LayoutCubit.get(context);
       return ConditionalBuilder(
-        condition: cubit.userModel != null && cubit.adminModel != null,
+        condition: cubit.userModel != null && cubit.adminModel != null && cubit.titlesList != null,
         builder: (context) {
           return Scaffold(
             appBar: AppBar(

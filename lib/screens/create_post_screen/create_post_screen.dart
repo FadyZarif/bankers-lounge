@@ -39,7 +39,11 @@ class CreatePostScreen extends StatelessWidget {
           TextButton(
               onPressed: () {
                 if (formKey.currentState!.validate()) {
-                  cubit.createNewPost(postText: postTextController.text);
+                  if(postUrlController.text.isNotEmpty) {
+                    cubit.createNewPost(postText: postTextController.text,postUrl: postUrlController.text);
+                  }else{
+                    cubit.createNewPost(postText: postTextController.text);
+                  }
                 }
               },
               child: const Text('Post'))
