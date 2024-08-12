@@ -2,8 +2,8 @@
 
 Banker's Lounge Company [Linkedin](https://www.linkedin.com/company/bankers-lounge/) owns this application and has been uploaded to [Google Play Store](https://play.google.com/store/apps/details?id=com.emadkattara.bankerslounge&hl=en)
 This application provides a user interface and an administrative interface for two main purposes
-First: Follow the banking news and opportunities provided by Banker's Lounge, where Banker's Lounge uploads these news and events from the admin interface
-Second: The application provides the educational material provided by the institution. At first, this content is locked and the user requests permission and the supervisors grant it, knowing that it is not possible to take a screenshot while viewing the material.
+*First: Follow the banking news and opportunities provided by Banker's Lounge, where Banker's Lounge uploads these news and events from the admin interface
+*Second: The application provides the educational material provided by the institution. At first, this content is locked and the user requests permission and the supervisors grant it, knowing that it is not possible to take a screenshot while viewing the material.
 ## Features:
 ### For Users:
 1. Authentication & SignUp
