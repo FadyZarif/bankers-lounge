@@ -28,9 +28,17 @@ View posts and banners and can click on it to redirect to link of event
   <img width="235" height="525" src="assets/project_images/request_material.gif">
 </p>
 
-5. After approval on request to access material of the course
+5. After approval on request prevent the user from taking screenshots or screen recording
 <p align="center">
-  <img width="235" height="525" src="assets/project_images/approval_material.gif">
+  <img width="235" height="525" src="assets/project_images/prevent_screenshot.gif">
+</p>
+
+https://github.com/user-attachments/assets/cf940f60-0bd9-424a-b27d-ed9110e0366c
+
+
+6. show all social media pages and location
+<p align="center">
+  <img width="235" height="525" src="assets/project_images/info.gif">
 </p>
 
 ### For Admins:
